@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_carrier_form" model="ir.ui.view">
+        <field name="name">carrierdashboard.carrier.form</field>
+        <field name="model">carrierdashboard.carrier</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Orders</h1>
+                    </div>
+                    <group col="4">
+                        <group>
+                            <field name="image" widget="image" class="oe_left"/>
+                        </group>
+                        <group>
+                            <!--                            <field name="order_id"/>-->
+                            <field name="From"/>
+                        </group>
+                        <group>
+                            <field name="to"/>
+                            <field name="product"/>
+                        </group>
+                        <group>
+                            <field name="quantity"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Transportation Details" name="Transportation Details">
+                            <button
+                                    name='%(CarrierDashboard.action_carrierdashboard_form)d'
+                                    string='Add New'
+                                    type='action'
+                                    help="On clicking this button, You can add new transportation details"
+                                    class='oe_highlight oe_right'/>
+                            <group>
+                                <field name="mode" widget="radio" class="oe_inline"></field>
+                            </group>
+
+                            <group col="4">
+                                <group>
+                                    <field name="vehicle_type"/>
+                                </group>
+                                <group>
+                                    <field name="vehicle_no"/>
+                                </group>
+                                <group>
+                                    <field name="driver_name"/>
+                                </group>
+                                <group>
+                                    <field name="driver_contact_number"/>
+                                </group>
+                                <group>
+                                    <field name="carrier_name"/>
+                                </group>
+                                <group>
+                                    <field name="tracking_number"/>
+                                </group>
+                            </group>
+                            <button
+                                    name='%(CarrierDashboard.action_carrierdashboard_form)d'
+                                    string='Save'
+                                    type='action'
+                                    help="On clicking this button, You can add new transportation details"
+                                    class='oe_highlight oe_right'/>
+
+<!--                            <group >/-->
+                                <tree editable="bottom" class="oe_subtotal_footer_separator">
+                                    <field name="vehicle_type" class="oe_inline" string="vehicle type"/>
+                                    <field name="vehicle_no" class="oe_inline" string="vehicle no"/>
+                                    <field name="driver_name" class="oe_inline" string="driver name"/>
+                                    <field name="carrier_name" class="oe_inline" string="carrier name"/>
+                                    <field name="tracking_number" class="oe_inline" string="tracking number"/>
+                                </tree>
+<!--                            </group>-->
+
+
+                        </page>
+                        <page string="certification&amp;Documents" name="certification&amp;Documents">
+                            <header>
+                                <h4>Upload New Documents</h4>
+                            </header>
+                            <group>
+                                <field name="document_name" placeholder="Input" invisible="1"/>
+                                <field name="document" filename="document_name" widget="many2many_binary"/>
+                            </group>
+                        </page>
+                        <page string="Tracking Details" name="Tracking Details">
+                            <field name="tag_ids">
+                                <tree editable="bottom">
+                                    <field name="carrier_name"/>
+                                    <field name="date"/>
+                                    <field name="current_location"/>
+                                    <field name="mode"/>
+                                    <field name="carrier_id"/>
+                                    <field name="remark"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_carrier_tree" model="ir.ui.view">
+        <field name="name">carrierdashboard.carrier.tree</field>
+        <field name="model">carrierdashboard.carrier</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="order_id"/>
+                <field name="From"/>
+                <field name="to"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_carrierdashboard" model="ir.actions.act_window">
+        <field name="name">Marketplace Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">carrierdashboard.carrier</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_carrierdashboard_form" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">carrierdashboard.carrier</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem
+            id="menu_carrierDashboard_Carrier"
+            name="Carrier"
+            parent="menu_carrierDashboard_Dashboard"
+            action="action_carrierdashboard"
+            sequence="10"/>
+</odoo>

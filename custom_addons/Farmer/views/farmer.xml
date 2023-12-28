@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_farmer_form" model="ir.ui.view">
+        <field name="name">farmer.crop.form</field>
+        <field name="model">farmer.crop</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="farmer_date_of_birth"/>
+                        <field name="age"/>
+                        <!--                        <field name="is_child"/>-->
+                        <field name="gender"/>
+                        <field name="packer_id" options="{'no_open':True,'no_create':True}"/>
+                        <field name="packing_Datetime"/>
+                        <!--                        <field name="packer_gender"/>-->
+                        <!--                        <field name="capitalized_name"/>-->
+                        <field name="tag_ids" widget="many2many_tags"/>
+                        <field name="country"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_farmer_tree" model="ir.ui.view">
+        <field name="name">farmer.crop.tree</field>
+        <field name="model">farmer.crop</field>
+        <field name="arch" type="xml">
+            <tree
+                    multi_edit="1">
+                <field name="ref"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="packer_name"/>
+                <field name="activity_ids" widget="list_activity"/>
+                <field name="packing_Datetime"/>
+<!--                <field name="state"/>-->
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_farmer_search" model="ir.ui.view">
+        <field name="name">farmer.crop.search</field>
+        <field name="model">farmer.crop</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="['|',('name','ilike',self),('ref','ilike',self)]"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <filter name="filter_male" string="Male" domain="[('gender','=','male')]"/>
+                <filter name="filter_female" string="Female" domain="[('gender','=','female')]"/>
+                <filter name="filter_others" string="Others" domain="[('gender','=','others')]"/>
+                <separator/>
+                <!--                <filter name="filter_childs" string="Childs" domain="[('is_child','=',True)]"/>-->
+                <group expand="0" string="Group By...">
+                    <filter string="Gender" name="group_by_gender" context="{'group_by':'gender'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_farmer_crop" model="ir.actions.act_window">
+        <field name="name">Farmer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">farmer.crop</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child':1}</field>
+        <field name="search_view_id" ref="Farmer.view_farmer_search"/>
+    </record>
+
+    <menuitem id="menu_farmer"
+              name="Farmer_crop"
+              parent="menu_farmer_operations"
+              action="action_farmer_crop"
+              sequence="10"/>
+
+</odoo>

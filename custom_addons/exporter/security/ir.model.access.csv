@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_exporter_exporter,exporter.exporter,model_exporter_exporter,base.group_user,1,1,1,1
+Farmer.exporter_farmer,access_farmer_crop,Farmer.model_farmer_crop,exporter.group_exporter_farmer,1,1,1,1
+Farmer.exporter_govind,access_farmer_crop,Farmer.model_farmer_crop,exporter.group_exporter_govind,1,1,1,1

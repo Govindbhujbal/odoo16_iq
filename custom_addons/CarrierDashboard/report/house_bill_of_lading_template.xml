@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_house_bill_of_lading_id">
+        <!--        <t t-call="web.html_container">-->
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page" style="margin: 0; padding: 0;">
+                    <div class="oe_structure"/>
+                    <style type="text/css">
+                        .tg {
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                        width: 100%;
+                        }
+
+                        .tg td {
+                        border-color: black;
+                        border-style: solid;
+                        border-width: 1px;
+                        font-family: Arial, sans-serif;
+                        font-size: 14px;
+                        <!--                            overflow-x: auto;-->
+                        <!--                            overflow-y: auto;-->
+                        <!--                            padding: 10px 5px;-->
+                        }
+
+                        .tg {
+                        border-color: black;
+                        border-style: solid;
+                        border-width: 1px;
+                        font-family: Arial, sans-serif;
+                        font-size: 14px;
+                        font-weight: normal;
+                        <!--                            overflow-x: auto;-->
+                        <!--                            padding: 10px 5px;-->
+                        }
+
+                        .tg .tg-0pky {
+                        border-color: inherit;
+                        text-align: left;
+                        vertical-align: top
+                        }
+
+                        .heading {
+                        font-weight: bold;
+                        font-size: large;
+                        text-align: center;
+                        }
+                        .container{
+                        margin: 0;
+                        padding: 0;
+                        }
+                        span{
+                        font-weight: bold;
+                        }
+                    </style>
+                    <div class="container">
+                        <div class="heading">HOUSE BILL OF LADING</div>
+                        <table class="tg table table-condensed table-class">
+                            <tr>
+                                <td class="tg-0pky" colspan="4" rowspan="4" width="50%">Shipper
+                                    <br/>
+                                    <span t-field="o.shipper"/>
+                                </td>
+                                <td class="tg-0pky" colspan="4" style="text-align:right;">Pages
+                                    <br/>
+                                    <span t-field="o.pages"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="2" rowspan="1">Shipper's Reference
+                                    <br/>
+                                    <span t-field="o.shipper_reference_id"/>
+                                </td>
+                                <td class="tg-0pky" colspan="2" rowspan="2">Bill of Lading Number
+                                    <br/>
+                                    <span t-field="o.bill_of_lading_number"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="2" rowspan="1">Carrier's Reference
+                                    <br/>
+                                    <span t-field="o.carriers_reference"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="4">Unique Consignment Reference
+                                    <br/>
+                                    <span t-field="o.unique_consignment_reference"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="tg-0pky" colspan="4" rowspan="4">Consignee
+                                    <br/>
+                                    <span t-field="o.consignee"/>
+                                </td>
+                                <td class="tg-0pky" colspan="4" rowspan="4">Carrier Name
+                                    <br/>
+                                    <span t-field="o.carrier_name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="4"><pre></pre></td>
+                                <td class="tg-0pky" colspan="4"><pre></pre></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="2"><pre></pre></td>
+                                <td class="tg-0pky" colspan="2">Place of Receipt
+                                    <br/>
+                                    <span t-field="o.place_of_receipt"/>
+                                </td>
+                                <td class="tg-0pky" colspan="4" rowspan="2"><pre></pre></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky">Vessel / Aircraft
+                                    <br/>
+                                    <span t-field="o.vessel_aircraft"/>
+                                </td>
+                                <td class="tg-0pky">Voyage No
+                                    <br/>
+                                    <span t-field="o.voyage_no"/>
+                                </td>
+                                <td class="tg-0pky" colspan="2">Port of Loading
+                                    <br/>
+                                    <span t-field="o.port_of_loading"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="2">Port of Discharge
+                                    <br/>
+                                    <span t-field="o.port_of_discharge"/>
+                                </td>
+                                <td class="tg-0pky" colspan="4">Place of Delivery
+                                    <br/>
+                                    <span t-field="o.place_of_delivery"/>
+                                </td>
+                                <td class="tg-0pky" colspan="2">Final Destination
+                                    <br/>
+                                    <span t-field="o.final_destination"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky">Order ID
+                                    <br/>
+                                    <span t-field="o.order_id"/>
+                                </td>
+                                <td class="tg-0pky">No of Packages
+                                    <br/>
+                                    <span t-field="o.no_of_packages"/>
+                                </td>
+                                <td class="tg-0pky" colspan="2">Product Name
+                                    <br/>
+                                    <span t-field="o.product_name"/>
+                                </td>
+                                <td class="tg-0pky">Lot No.
+                                    <br/>
+                                    <span t-field="o.lot_no"/>
+                                </td>
+                                <td class="tg-0pky">Net Weight (Kg)
+                                    <br/>
+                                    <span t-field="o.net_weight_kg"/>
+                                </td>
+                                <td class="tg-0pky">Gross Weight (Kg)
+                                    <br/>
+                                    <span t-field="o.gross_weight_kg"/>
+                                </td>
+                                <td class="tg-0pky">Volume (m³)
+                                    <br/>
+                                    <span t-field="o.volume_m3"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="5">Consignment Total</td>
+                                <td class="tg-0pky">
+                                    <span t-field="o.net_weight_kg"/>
+                                </td>
+                                <td class="tg-0pky">
+                                    <span t-field="o.gross_weight_kg"/>
+                                </td>
+                                <td class="tg-0pky">
+                                    <span t-field="o.volume_m3"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="2">Container No(s)
+                                    <br/>
+                                    <span t-field="o.container_nos"/>
+                                </td>
+                                <td class="tg-0pky" colspan="4">Container Type
+                                    <br/>
+                                    <span t-field="o.container_type"/>
+                                </td>
+                                <td class="tg-0pky" colspan="2">Cargo Weight (kg)
+                                    <br/>
+                                    <span t-field="o.cargo_weight_kg"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="8"><pre></pre></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="2">No. of original Bills of Lading
+                                    <br/>
+                                    <span t-field="o.original_bills_of_lading"/>
+                                </td>
+                                <td class="tg-0pky">Incoterms® 2020
+                                    <br/>
+                                    <span t-field="o.incoterms_2020"/>
+                                </td>
+                                <td class="tg-0pky" colspan="2">Payable at
+                                    <br/>
+                                    <span t-field="o.payable_at"/>
+                                </td>
+                                <td class="tg-0pky">Freight Charges
+                                    <br/>
+                                    <span t-field="o.freight_charges"/>
+                                </td>
+                                <td class="tg-0pky" colspan="2">Shipped on Board Date
+                                    <br/>
+                                    <span t-field="o.shipped_on_board_date"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="5" rowspan="5">Terms and Conditions
+                                    <br/>
+<!--                                    <span t-field="o.shipper"/>-->
+                                </td>
+                                <td class="tg-0pky" colspan="3">Place and Date of Issue
+                                    <br/>
+                                    <span t-field="o.place_and_date_of_issue"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="3">Signatory Company
+                                    <br/>
+                                    <span t-field="o.signatory_company"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="3">Name of Authorized Signatory
+                                    <br/>
+                                    <span t-field="o.name_of_authorized_signatory"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0pky" colspan="3" rowspan="2">Signature
+                                    <br/>
+                                    <span t-if="o.image" t-field="o.image" t-options="{'widget':'image', 'width':200, 'height':200}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+        <!--        </t>-->
+    </template>
+
+</odoo>

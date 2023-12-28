@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_stock_picking_form_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.inherited</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='extra']" position="after">
+                <page string="Documents &amp; Certifications" name="certification_and_document">
+                    <header>
+                        <h4>Upload New Documents</h4>
+                    </header>
+                    <group>
+                        <field name="document_name" placeholder="Input" invisible="1"/>
+                        <field name="document" filename="document_name" widget="many2many_binary"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

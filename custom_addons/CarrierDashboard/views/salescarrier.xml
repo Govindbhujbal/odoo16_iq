@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<!--    <record id="view_stock_picking_form_inherit" model="ir.ui.view">-->
+<!--        <field name="name">stock.picking.inherited</field>-->
+<!--        <field name="model">stock.picking</field>-->
+<!--        <field name="inherit_id" ref="stock.view_picking_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//notebook/page[@name='extra']" position="after">-->
+<!--                <page string="Documents &amp; Certifications" name="certification_and_document">-->
+<!--                    <header>-->
+<!--                        <h4>Upload New Documents</h4>-->
+<!--                    </header>-->
+<!--                    <group>-->
+<!--                        <field name="document_name" placeholder="Input" invisible="1"/>-->
+<!--                        <field name="document" filename="document_name" widget="many2many_binary"/>-->
+<!--                    </group>-->
+<!--                </page>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+    <record id="view_sales_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.inherited</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook/page[@name='customer_signature']" position="after">
+                <page string="Transportation Details" name="transportation_details">
+                    <field name="tracking_number_ids">
+                        <tree editable="bottom">
+                            <field name="mode"/>
+                            <field name="vehicle_type"/>
+                            <field name="vehicle_no"/>
+                            <field name="driver_name"/>
+                            <field name="driver_contact_number"/>
+                            <field name="carrier_name"/>
+                            <field name="tracking_number_id"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+
+            <!--                        <xpath expr="//notebook/page[@name='transportation_details']" position="after">-->
+            <!--                            <page string="Documents &amp; Certifications" name="certification_and_document">-->
+            <!--                                <header>-->
+            <!--                                    <h4>Upload New Documents</h4>-->
+            <!--                                </header>-->
+            <!--                                <group>-->
+            <!--                                    <field name="document_name" placeholder="Input" invisible="1"/>-->
+            <!--                                    <field name="document" filename="document_name" widget="many2many_binary"/>-->
+            <!--                                </group>-->
+            <!--                            </page>-->
+            <!--                        </xpath>-->
+
+            <xpath expr="//notebook/page[@name='transportation_details']" position="after">
+                <page string="Tracking Details" name="tracking_details">
+                    <field name="tag_ids">
+                        <tree editable="bottom">
+                            <field name="carrier_name"/>
+                            <field name="date"/>
+                            <field name="current_location"/>
+                            <field name="mode"/>
+                            <field name="carrier_id"/>
+                            <field name="remark"/>
+                        </tree>
+                    </field>
+                    <group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_sales_tree_inherit" model="ir.ui.view">
+        <field name="name">sale.order.inherited</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="sale_description"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="action_carrierdashboard_sales" model="ir.actions.act_window">
+        <field name="name">sales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_sale"
+              name="Sales"
+              parent="menu_carrierDashboard_root"
+              action="action_carrierdashboard_sales"
+              sequence="10"/>
+
+</odoo>

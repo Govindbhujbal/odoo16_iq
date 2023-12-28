@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+            id="menu_carrierDashboard_root"
+            name="Carrier Dashboard"
+            web_icon = "Farmer,static/description/scm.png"
+            sequence="10"/>
+
+    <menuitem
+            id="menu_carrierDashboard_Dashboard"
+            name="Dashboard"
+            parent="menu_carrierDashboard_root"
+            sequence="10"/>
+
+
+<!--    <menuitem-->
+<!--            id="menu_carrierDashboard_purchaseorder"-->
+<!--            name="Purchase Order"-->
+<!--            parent="menu_carrierDashboard_root"-->
+<!--            sequence="10"/>-->
+
+
+
+</odoo>
+
+
+
+
+
+

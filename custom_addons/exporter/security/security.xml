@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.module.category" id="module_category_exporter">
+        <field name="name">Exporter</field>
+        <field name="description">Category for Exporter</field>
+    </record>
+
+    <record id="group_exporter_farmer" model="res.groups">
+        <field name="name">Farmer</field>
+        <field name="category_id" ref="module_category_exporter"/>
+    </record>
+
+
+    <record id="group_exporter_govind" model="res.groups">
+        <field name="name">Govind</field>
+        <field name="category_id" ref="module_category_exporter"/>
+        <field name="implied_ids" eval="[(4,ref('group_exporter_farmer'))]"/>
+    </record>
+
+
+</odoo>

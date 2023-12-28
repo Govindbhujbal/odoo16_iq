@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+Farmer.access_farmer_crop,access_farmer_crop,Farmer.model_farmer_crop,base.group_user,1,1,1,1
+Farmer.access_farmer_packer_goods,access_farmer_packer_goods,Farmer.model_farmer_packer_goods,base.group_user,1,1,1,1
+Farmer.access_farmer_packer_appointment,access_farmer_packer_appointment,Farmer.model_farmer_packer_appointment,base.group_user,1,1,1,1
+Farmer.access_appointment_packer_lines,access_appointment_packer_lines,Farmer.model_appointment_packer_lines,base.group_user,1,1,1,1

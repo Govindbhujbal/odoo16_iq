@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_sales_house_bill_of_lading_form" model="ir.ui.view">
+        <field name="name">sale.housebilloflading.form</field>
+        <field name="model">sale.housebilloflading</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <!--                    <button name="action_send_to_approve" string="Send To Approve" type="object" class="oe_highlight"-->
+                    <!--                            groups="exporter.group_exporter_farmer"/>-->
+                    <!--                    <field name="state" widget="statusbar" nolabel="1"/>-->
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="shipper"/>
+                            <field name="pages"/>
+                            <field name="shipper_reference_id"/>
+                            <field name="bill_of_lading_number"/>
+                        </group>
+                        <group>
+                            <field name="carriers_reference"/>
+                            <field name="unique_consignment_reference"/>
+                            <field name="consignee"/>
+                            <field name="carrier_name"/>
+                        </group>
+                        <group>
+                            <field name="place_of_receipt"/>
+                            <field name="vessel_aircraft"/>
+                            <field name="voyage_no"/>
+                            <field name="port_of_loading"/>
+                        </group>
+                        <group>
+                            <field name="port_of_discharge"/>
+                            <field name="place_of_delivery"/>
+                            <field name="final_destination"/>
+                            <field name="order_id"/>
+                        </group>
+                        <group>
+                            <field name="no_of_packages"/>
+                            <field name="product_name"/>
+                            <field name="lot_no"/>
+                            <field name="net_weight_kg"/>
+                        </group>
+                        <group>
+                            <field name="gross_weight_kg"/>
+                            <field name="volume_m3"/>
+<!--                            <field name="consignment_total"/>-->
+                            <field name="container_nos"/>
+                        </group>
+                        <group>
+                            <field name="container_type"/>
+                            <field name="cargo_weight_kg"/>
+                            <field name="original_bills_of_lading"/>
+                            <field name="incoterms_2020"/>
+                        </group>
+                        <group>
+                            <field name="payable_at"/>
+                            <field name="freight_charges"/>
+                            <field name="shipped_on_board_date"/>
+                            <field name="place_and_date_of_issue"/>
+                        </group>
+                        <group>
+                            <field name="signatory_company"/>
+                            <field name="name_of_authorized_signatory"/>
+<!--                            <field name="signature"/>-->
+<!--                            <group>-->
+<!--                                <field name="document_name" placeholder="Input" invisible="1"/>-->
+<!--                                <field name="image" filename="document_name" widget="many2many_binary"/>-->
+                            <field name="image" widget="image" class="oe_avatar oe_left"/>
+<!--                            </group>-->
+                        </group>
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sales_house_bill_of_lading_tree" model="ir.ui.view">
+        <field name="name">sale.housebilloflading.tree</field>
+        <field name="model">sale.housebilloflading</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="shipper"/>
+                <field name="pages"/>
+                <field name="shipper_reference_id"/>
+                <field name="bill_of_lading_number"/>
+                <field name="carriers_reference"/>
+                <field name="unique_consignment_reference"/>
+                <field name="consignee" optional="hide"/>
+                <field name="carrier_name" optional="hide"/>
+                <field name="place_of_receipt" optional="hide"/>
+                <field name="vessel_aircraft" optional="hide"/>
+                <field name="voyage_no" optional="hide"/>
+                <field name="port_of_loading" optional="hide"/>
+                <field name="port_of_discharge" optional="hide"/>
+                <field name="place_of_delivery" optional="hide"/>
+                <field name="final_destination" optional="hide"/>
+                <field name="order_id" optional="hide"/>
+                <field name="no_of_packages" optional="hide"/>
+                <field name="product_name" optional="hide"/>
+                <field name="lot_no" optional="hide"/>
+                <field name="net_weight_kg" optional="hide"/>
+                <field name="gross_weight_kg" optional="hide"/>
+                <field name="volume_m3" optional="hide"/>
+                <field name="consignment_total" optional="hide"/>
+                <field name="container_nos" optional="hide"/>
+                <field name="container_type" optional="hide"/>
+                <field name="cargo_weight_kg" optional="hide"/>
+                <field name="original_bills_of_lading" optional="hide"/>
+                <field name="incoterms_2020" optional="hide"/>
+                <field name="payable_at" optional="hide"/>
+                <field name="freight_charges" optional="hide"/>
+                <field name="shipped_on_board_date" optional="hide"/>
+                <field name="place_and_date_of_issue" optional="hide"/>
+                <field name="signatory_company" optional="hide"/>
+                <field name="name_of_authorized_signatory" optional="hide"/>
+                <field name="signature" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_sales_house_bill_of_lading" model="ir.actions.act_window">
+        <field name="name">House Bill Of Lading</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.housebilloflading</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="menu_sales_house_bill_of_lading"
+            name="Bill_of_Lading"
+            parent="menu_carrierDashboard_root"
+            action="action_sales_house_bill_of_lading"
+            sequence="10"/>
+
+</odoo>

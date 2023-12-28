@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="carrierdashboard_report_picking_inherit" inherit_id="stock.report_picking">
+        <xpath expr="//div[@class='page']" position="before">
+<!--            <div class="header" style="text-align: right;">-->
+<!--                <div class="oe_title" style="text-align: right;">-->
+                    <h1
+                            style="color: orange;
+                        font-weight: bold;
+                        text-align: right;
+                        margin-right: 0px;
+                        margin-bottom:40px">PACKAGE SLIP
+                    </h1>
+<!--                </div>-->
+<!--            </div>-->
+        </xpath>
+    </template>
+</odoo>

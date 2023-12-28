@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_carrierdashboard_invoice" model="ir.actions.act_window">
+        <field name="name">Invoice</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" eval="True"/>
+    </record>
+
+
+    <menuitem
+            id="menu_carrierdashboard_invoice"
+            name="Invoice"
+            parent="menu_carrierDashboard_root"
+            action="action_carrierdashboard_invoice"
+            sequence="10"/>
+</odoo>
+

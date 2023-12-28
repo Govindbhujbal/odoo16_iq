@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_farmer_form_inherit" model="ir.ui.view">
+        <field name="name">farmer.crop.inherited</field>
+        <field name="model">farmer.crop</field>
+        <field name="inherit_id" ref="Farmer.view_farmer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/*" position="before">
+					<header>
+                        <field name="status" widget="statusbar" nolabel="1" ststusbar_visible="pending,approved,rejected"/>
+                        <button name="action_send_to_approve" string="Send To Approve" type="object" class="oe_highlight"
+                        groups="exporter.group_exporter_farmer" attrs="{'invisible':[('status','!=', 'draft')]}"/>
+
+                        <button name="action_approved" string="Approve" type="object" class="oe_highlight"
+                                groups="exporter.group_exporter_govind" attrs="{'invisible':[('status','!=','pending')]}"/>
+                        <button name="action_reject" string="Reject" type="object" class="oe_highlight"
+                                groups="exporter.group_exporter_govind" attrs="{'invisible':[('status','!=','pending')]}"/>
+
+
+
+                    </header>
+				</xpath>
+        </field>
+    </record>
+
+
+    <record id="view_farmer_tree_inherit" model="ir.ui.view">
+        <field name="name">farmer.crop.inherited</field>
+        <field name="model">farmer.crop</field>
+        <field name="inherit_id" ref="Farmer.view_farmer_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='packing_Datetime']" position="after">
+                <field name="status"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="action_exporter_dashboard" model="ir.actions.act_window">
+        <field name="name">Exporter Dashboard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">farmer.crop</field>
+        <field name="domain">[('status', '!=', 'draft')]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="menu_exporter_dashboard"
+              name="Dashboard"
+              parent="menu_exporter_root"
+              action="action_exporter_dashboard"
+              groups="exporter.group_exporter_govind"
+              sequence="10"/>
+</odoo>

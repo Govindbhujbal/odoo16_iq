@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_exporter_root"
+              name="Exporter Dashboard"
+              sequence="10"/>
+
+</odoo>
