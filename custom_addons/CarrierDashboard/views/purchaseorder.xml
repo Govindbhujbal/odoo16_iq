@@ -23,6 +23,30 @@
         </field>
     </record>
 
+    <record id="view_carrierdashboard_res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.inherited</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="packer_assignment"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_carrierdashboard_res_partner_tree_inherit" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherited</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="packer_assignment" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+
     <record id="action_carrierdashboard_purchaseorder" model="ir.actions.act_window">
         <field name="name">Purchase Order</field>
         <field name="type">ir.actions.act_window</field>
@@ -30,11 +54,26 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+
+    <record id="action_carrierdashboard_purchase_vendors" model="ir.actions.act_window">
+        <field name="name">Vendors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <menuitem
-            id="menu_carrierdashboard_purchase_order"
+            id="menu_carrierdashboard_purchase_purchase_order"
             name="Purchase Order"
-            parent="menu_carrierDashboard_root"
+            parent="menu_carrierdashboard_purchase"
             action="action_carrierdashboard_purchaseorder"
+            sequence="10"/>
+
+    <menuitem
+            id="menu_carrierdashboard_purchase_vendors"
+            name="Vendors"
+            parent="menu_carrierdashboard_purchase"
+            action="action_carrierdashboard_purchase_vendors"
             sequence="10"/>
 
 </odoo>

@@ -17,4 +17,14 @@
             <field name="padding">6</field>
         </record>
     </data>
+
+    <data noupdate="1">
+        <record id = "sequence_sales_housebilloflading" model="ir.sequence">
+            <field name="name">Sales House Bill of Lading Sequence</field>
+            <field name="code">stock.picking</field>
+            <field name="prefix">BL</field>
+            <field name="padding">6</field>
+        </record>
+    </data>
+
 </odoo>

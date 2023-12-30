@@ -1,5 +1,6 @@
 from odoo import fields, models, api, _
 
+
 class purchaseorder(models.Model):
     _inherit = ['purchase.order.line']
     _description = 'purchase order line records'
@@ -21,8 +22,32 @@ class purchaseorderhelper(models.Model):
 
     def _compute_helper(self):
         for records in self:
-            purchase_order_lines = self.env['purchase.order.line'].search([('order_id', '=', records.id)],limit=1)
+            purchase_order_lines = self.env['purchase.order.line'].search([('order_id', '=', records.id)], limit=1)
             if purchase_order_lines:
                 records.open_quantity = purchase_order_lines[0].open_quantity
             else:
                 records.open_quantity = 0
+
+
+class Vendors(models.Model):
+    _inherit = ['res.partner']
+    _description = 'Res Partner records'
+
+    packer_assignment = fields.Selection([
+        ('Yes', 'Yes'),
+        ('No', 'No'),
+    ], string="Packer Assignment")
+
+    # state = fields.Selection([
+    #     ('pending', 'Pending'),
+    #     ('approved', 'Approved'),
+    #     ('rejected', 'Rejected')], string='status')
+    # order_id = fields.Integer(string="order id")
+
+    # def _compute_helper(self):
+    #     for records in self:
+    #         purchase_order_lines = self.env['purchase.order.line'].search([('order_id', '=', records.id)],limit=1)
+    #         if purchase_order_lines:
+    #             records.open_quantity = purchase_order_lines[0].open_quantity
+    #         else:
+    #             records.open_quantity = 0

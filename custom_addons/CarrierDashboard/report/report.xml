@@ -9,4 +9,16 @@
         <field name="binding_model_id" ref="model_sale_housebilloflading"/>
         <field name="binding_type">report</field>
     </record>
+
+
+    <record id="report_sales_house_bill_of_lading" model="ir.actions.report">
+        <field name="name">House Bill Of Lading</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">CarrierDashboard.report_sales_house_bill_of_lading_id</field>
+        <field name="report_file">CarrierDashboard.report_sales_house_bill_of_lading_id</field>
+        <field name="binding_model_id" ref="model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
+
 </odoo>

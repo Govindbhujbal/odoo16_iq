@@ -18,6 +18,7 @@
         'report/report.xml',
         'report/stock_report_picking.xml',
         'report/house_bill_of_lading_template.xml',
+        'report/sales_house_bill_of_lading_template.xml',
     ],
     'demo':[],
     'qweb':[],
