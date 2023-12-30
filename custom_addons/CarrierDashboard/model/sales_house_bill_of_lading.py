@@ -75,26 +75,17 @@ class SalesHouseBillOfLading(models.Model):
             sale_orders = self.env['sale.order'].search([('name', '=', records.origin)])
 
             id_of_stock_move_line = records.id
-            print(id_of_stock_move_line)
             self.env.cr.commit()
             # time.sleep(10)
             stock_move_lines = self.env['stock.move.line'].search([('picking_id', '=', 127)])
-            print(stock_move_lines)
             # stock_move_lines = self.env['stock.move'].search([('partner_id', '=', records.id)])
-            print("below stock move line")
             if stock_move_lines:
-                print("inside stock_move_lines")
                 records.lot_no = stock_move_lines[0].lot_id.name
-                print("this is lot no ---->  ", records.lot_no)
             else:
-                print("inside else of stock move lines")
-                print("value of stock_move_lines --> ", stock_move_lines)
                 records.lot_no = ''
 
             if sale_orders:
                 id_of_sale_order = sale_orders[0].id
-                print(id_of_sale_order)
-                print("inside sale_orders")
                 records.shipper = (sale_orders[0].user_id.city
                                    + '\n' + sale_orders[0].user_id.state_id.name
                                    + '\n' + sale_orders[0].user_id.zip
@@ -116,21 +107,12 @@ class SalesHouseBillOfLading(models.Model):
                 records.name_of_authorized_signatory = sale_orders[0].user_id.name
                 sale_order_lines = self.env['sale.order.line'].search([('order_id', '=', id_of_sale_order)])
                 if sale_order_lines:
-                    print("inside if of sale_order_lines")
-                    # print(sale_order_lines.name)
                     len_of_pol = len(sale_order_lines)
                     for i in range(len_of_pol):
-                        print(i)
                         records.product_name = sale_order_lines[0].name
-                        print(records.product_name)
                 else:
-                    print("inside else of sale_order_lines")
                     records.product_name = ''
             else:
-                print("in else of sale_orders")
                 records.shipper = ''
                 records.name_of_authorized_signatory = ''
 
-            print("this is record.id ---> ", records.id)
-            print("this is sale_id ---> ", records.sale_id)
-            print("this is origin ---> ", records.origin)
